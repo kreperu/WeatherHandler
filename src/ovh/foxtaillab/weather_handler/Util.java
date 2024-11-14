@@ -21,9 +21,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Util {
-    public static final int PORT = 8000;
+    public static final int PORT = 2052;
     public static final String PATH = "/data/";
-    public static final int MAX_CONNECTIONS = 64;
+    public static final int MAX_CONNECTIONS = 128;
     public static final int DNL_INTERVAL = 3600;
     public static final String SERVER_URL = "89.22.239.123";
     public static final String API_URL = "https://danepubliczne.imgw.pl/api/data/";
