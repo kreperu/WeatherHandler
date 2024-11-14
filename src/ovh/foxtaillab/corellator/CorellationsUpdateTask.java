@@ -33,6 +33,6 @@ public class CorellationsUpdateTask implements Runnable{
         HashSet<String> stationCities = new HashSet<String>(data.size());
         for(Map<String, String> object : data) stationCities.add(object.get("stacja"));
         HashMap<String, String> cors = Util.DATA_CORELLATOR.corellate(stationCities);
-        Util.DATA_CORELLATOR.generateCorellationsFile(cors);
+        Util.DATA_CORELLATOR.generateCorellationsFile(cors, true);
     }
 }

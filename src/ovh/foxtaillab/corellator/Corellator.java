@@ -17,15 +17,12 @@
 
 package ovh.foxtaillab.corellator;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Corellator {
@@ -74,7 +71,7 @@ public class Corellator {
         return minima;
     }
 
-    public void generateCorellationsFile(HashMap<String, String> corellations) {
+    public void generateCorellationsFile(HashMap<String, String> corellations, boolean webCompatible) {
         try {
             //generated.delete();
             generated.createNewFile();
@@ -83,7 +80,7 @@ public class Corellator {
         }
         try {
             FileWriter wrt = new FileWriter(generated);
-            wrt.write(JSONStringer.valueToString(corellations));
+            wrt.write((webCompatible ? "var corellations = " : "") + JSONStringer.valueToString(corellations));
             wrt.close();
         } catch (Exception e) {
             e.printStackTrace();
