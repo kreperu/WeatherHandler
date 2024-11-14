@@ -41,14 +41,15 @@ public class Corellator {
         generated = new File(outFName);
     }
 
-    public HashMap<String, String> corellate(HashSet<String> corellants) {
-        HashMap<String, String> minima = new HashMap<String, String>(operands.size());
+    public HashMap<String, Integer> corellate(HashSet<String> corellants) {
+        HashMap<String, Integer> minima = new HashMap<String, Integer>(operands.size());
         int i = 0;
         for(Map.Entry<String, Object> ent : operands.entrySet()) {
         //Map.Entry<String, Object> ent = Map.entry("Pszów", new String[]{"SL", "50.03994000", "18.39472000"});
             double minD = Integer.MAX_VALUE;
             double d = 0;
-            String minEntry = "";
+            int minEntry = 0;
+            int indexCorel = 0;
             for(String elm : corellants) {
                 if(elm == null || elm.isEmpty()) continue;
                 if(!operands.containsKey(elm))  {
@@ -61,8 +62,9 @@ public class Corellator {
                 d = Math.sqrt(lat*lat+lon*lon);
                 if(d < minD) {
                     minD = d;
-                    minEntry = elm;
+                    minEntry = indexCorel;
                 }
+                ++indexCorel;
             }
             minima.put(ent.getKey(), minEntry);
             ++i;
@@ -71,7 +73,7 @@ public class Corellator {
         return minima;
     }
 
-    public void generateCorellationsFile(HashMap<String, String> corellations, boolean webCompatible) {
+    public void generateCorellationsFile(HashMap<String, Integer> corellations, boolean webCompatible) {
         try {
             //generated.delete();
             generated.createNewFile();

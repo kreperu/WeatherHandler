@@ -32,7 +32,7 @@ public class CorellationsUpdateTask implements Runnable{
         ArrayList<Map<String, String>> data = (ArrayList<Map<String, String>>)(new JSONObject(Util.dataCollective)).toMap().get("synop");
         HashSet<String> stationCities = new HashSet<String>(data.size());
         for(Map<String, String> object : data) stationCities.add(object.get("stacja"));
-        HashMap<String, String> cors = Util.DATA_CORELLATOR.corellate(stationCities);
+        HashMap<String, Integer> cors = Util.DATA_CORELLATOR.corellate(stationCities);
         Util.DATA_CORELLATOR.generateCorellationsFile(cors, true);
     }
 }
