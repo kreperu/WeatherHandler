@@ -15,6 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.*/
 
+import ovh.foxtaillab.corellator.CorellationsUpdateTask;
 import ovh.foxtaillab.weather_handler.*;
 
 import java.util.concurrent.ScheduledExecutorService;
@@ -27,8 +28,9 @@ public class Main {
                 "    This program comes with ABSOLUTELY NO WARRANTY;\n" +
                 "    This is free software, and you are welcome to redistribute it\n" +
                 "    under certain conditions;");
-        ScheduledExecutorService ses = new ScheduledThreadPoolExecutor(1);
+        ScheduledExecutorService ses = new ScheduledThreadPoolExecutor(2);
         ses.scheduleAtFixedRate(new DataUpdateTask(), 0, Util.DNL_INTERVAL, TimeUnit.SECONDS);
+        ses.scheduleAtFixedRate(new CorellationsUpdateTask(), 10, Util.DNL_INTERVAL, TimeUnit.SECONDS);
         DataServer ds = new DataServer(Util.PORT, Util.MAX_CONNECTIONS, Util.PATH);
         ds.start();
     }

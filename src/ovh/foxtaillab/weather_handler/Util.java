@@ -17,6 +17,8 @@
 
 package ovh.foxtaillab.weather_handler;
 
+import ovh.foxtaillab.corellator.Corellator;
+
 import java.util.HashMap;
 
 public class Util {
@@ -27,6 +29,11 @@ public class Util {
     public static final String API_URL = "https://danepubliczne.imgw.pl/api/data/";
     public static final String[] DATA_TYPES = {"synop", "meteo", "hydro", "warningsmeteo", "warningshydro"};
     public static final int DATA_TYPE_AMT = DATA_TYPES.length;
+    //public static final String CITY_FILE_PATH = "/home/kuba/Pulpit/Socket/out/production/Socket/cityCorellation.json";
+    public static final String CITY_FILE_PATH = "./cityCorellation.json";
+    //public static final String OUTPUT_FILE_PATH = "/home/kuba/Pulpit/Socket/out/production/Socket/gen.json";
+    public static final String OUTPUT_FILE_PATH = "./gen.json";
+    public static final Corellator DATA_CORELLATOR = new Corellator(Util.CITY_FILE_PATH, Util.OUTPUT_FILE_PATH);
 
     public static String[] data = new String[DATA_TYPE_AMT];
     public static String apiDataCollective = "{}";
