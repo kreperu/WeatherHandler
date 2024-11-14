@@ -18,14 +18,12 @@
 package ovh.foxtaillab.weather_handler;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class Util {
     public static final int PORT = 2052;
     public static final String PATH = "/data/";
     public static final int MAX_CONNECTIONS = 128;
     public static final int DNL_INTERVAL = 3600;
-    public static final String SERVER_URL = "89.22.239.123";
     public static final String API_URL = "https://danepubliczne.imgw.pl/api/data/";
     public static final String[] DATA_TYPES = {"synop", "meteo", "hydro", "warningsmeteo", "warningshydro"};
     public static final int DATA_TYPE_AMT = DATA_TYPES.length;
